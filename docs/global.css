@@ -860,7 +860,7 @@ video {
 
 @font-face {
   font-family: 'Mohave';
-  src: url('/fonts/Mohave-Bold.woff') format('woff');
+  src: url('fonts/Mohave-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -868,7 +868,7 @@ video {
 
 @font-face {
   font-family: 'Mohave';
-  src: url('/fonts/Mohave-BoldItalic.woff') format('woff');
+  src: url('fonts/Mohave-BoldItalic.woff') format('woff');
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -876,7 +876,7 @@ video {
 
 @font-face {
   font-family: 'Mohave';
-  src: url('/fonts/Mohave-Italic.woff') format('woff');
+  src: url('fonts/Mohave-Italic.woff') format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -884,7 +884,7 @@ video {
 
 @font-face {
   font-family: 'Mohave';
-  src: url('/fonts/Mohave-LightItalic.woff') format('woff');
+  src: url('fonts/Mohave-LightItalic.woff') format('woff');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -892,7 +892,7 @@ video {
 
 @font-face {
   font-family: 'Mohave';
-  src: url('/fonts/Mohave-Light.woff') format('woff');
+  src: url('fonts/Mohave-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -900,7 +900,7 @@ video {
 
 @font-face {
   font-family: 'Mohave';
-  src: url('/fonts/Mohave-MediumItalic.woff') format('woff');
+  src: url('fonts/Mohave-MediumItalic.woff') format('woff');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -908,7 +908,7 @@ video {
 
 @font-face {
   font-family: 'Mohave';
-  src: url('/fonts/Mohave-Medium.woff') format('woff');
+  src: url('fonts/Mohave-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -916,7 +916,7 @@ video {
 
 @font-face {
   font-family: 'Mohave';
-  src: url('/fonts/Mohave-Regular.woff') format('woff');
+  src: url('fonts/Mohave-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
