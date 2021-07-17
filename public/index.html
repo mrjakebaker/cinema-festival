@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Starter Snowpack App" />
+  <link rel="stylesheet" type="text/css" href="/global.css" />
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <title>Festival Cinema</title>
+</head>
+
+<body class="font-body bg-primary-100">
+  <div x-data="events()" class="flex flex-col min-h-screen overflow-hidden ">
+    <div class="hidden lg:block fixed bg-primary-100 w-screen h-screen z-[-1] top-0 flex items-start">
+      <svg version="1.1" viewBox="0 0 500 500" preserveAspectRatio="xMinYMin meet" class="transform ">
+        <ellipse cx="250" cy="250" rx="200" ry="250" class="text-primary-200" fill="currentColor" />
+        <ellipse cx="250" cy="250" rx="150" ry="200" class="text-primary-300" fill="currentColor" />
+        <ellipse cx="250" cy="250" rx="75" ry="150" class="text-primary-100" fill="currentColor" />
+      </svg>
+    </div>
+    <header class="mt-8 opacity md:mt-16 lg:mt-32">
+      <div class="container">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+
+          <div class="flex flex-col justify-between flex-1">
+            <h1 class="font-medium text-7xl sm:text-[100px] lg:text-7xl text-primary-900">Festival <span
+                class="lg:sr-only">Cinema</span></h1>
+            <p class="text-3xl font-medium lg:text-4xl font-alt text-primary-700">10 &#151; 24 March / 2021</p>
+          </div>
+
+          <span aria-hidden="true"
+            class="hidden lg:block font-medium text-primary-900 text-[200px] leading-[200px] transform -mt-4 -mb-4">CINEMA</span>
+
+        </div>
+      </div>
+    </header>
+
+    <main class="py-24 opacity">
+      <div class="container space-y-4">
+        <template hidden x-for="(day, dayindex) in eventlist">
+          <section>
+
+            <header class="relative z-30 flex items-center -mb-2">
+              <span class="grid w-12 h-12 text-xl text-white rounded-full place-items-center bg-secondary-500 font-alt"
+                x-text="day.date"></span>
+              <h2 x-text="day.day" class="pl-2 text-lg capitalize text-primary-900 font-alt">Sunday 10th</h2>
+            </header>
+
+            <!-- <span x-text="dayindex"></span>/
+            <span x-text="eventlist.length"></span> -->
+            <ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-4 ">
+              <template hidden x-for="(event,index) in day.events">
+                <li class="flex flex-col py-4 bg-white h-96">
+                  <h3 class="px-4 text-4xl tracking-wide uppercase text-primary-900 max-w-[14ch]" x-text="event.name">
+                  </h3>
+                  <div class="relative px-4 mt-auto">
+                    <p class="relative z-20 inline-block px-2 text-2xl transform bg-white text-secondary-500"
+                      x-text="event.time"></p>
+
+                    <div
+                      class="-ml-4 md:hidden absolute md:left-[50%] md:ml-[-50vw] w-screen md:w-[200vw] h-1 top-3 bg-secondary-500">
+                    </div>
+                    <!-- if first item in row -->
+                    <template x-if="dayindex === 0">
+                      <div class="absolute w-screen h-1 md:-ml-4 top-3 bg-secondary-500"></div>
+                    </template>
+                    <!-- middles -->
+                    <template x-if="dayindex > 0 && dayindex < eventlist.length - 1">
+                      <div
+                        class="absolute md:left-[50%] md:ml-[-50vw] w-screen md:w-[200vw] h-1 top-3 bg-secondary-500">
+                      </div>
+                    </template>
+                    <!--  last row -->
+                    <template x-if="dayindex === eventlist.length -1 && index+1 === day.events.length">
+                      <div>
+
+                        <div
+                          class="absolute w-screen h-1 -ml-4 md:transform md:-translate-x-full bg-secondary-500 top-3">
+                        </div>
+                        <div class="absolute left-0 w-full h-1 bg-secondary-500 top-3"></div>
+                      </div>
+                    </template>
+
+                  </div>
+                  <footer class="flex items-end h-10 px-4 mt-8 text-base text-gray-400 font-alt">
+                    <p x-text="event.country" class="truncate whitespace-nowrap"></p>.
+                    <p class="flex-shrink-0 pl-2"><span x-text="event.length"></span> min</p>
+                    <template x-if="event.cert">
+                      <div class="p-1 ml-auto text-white bg-gray-400 ">
+
+                        <p x-text="event.cert" class="truncate whitespace-nowrap"></p>
+                      </div>
+                    </template>
+                  </footer>
+                </li>
+              </template>
+            </ul>
+          </section>
+        </template>
+
+      </div>
+    </main>
+
+    <footer>
+      <div class="container py-4">
+
+        <p class="text-primary-900 text-alt">Inspired by this original design from <a target="_blank" rel="noopener"
+            class="underline"
+            href="https://creativemarket.com/everydaytemplate/3499066-Film-Festival-Schedule-Poster">EDT.Graphics</a>.
+          Recreated for fun and with love by <a href="https://jakebaker.dev" target="_blank" rel="noopener"
+            class="underline">Jake Baker</a>.
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <script>
+    document.addEventListener('alpine:init', () => {
+      Alpine.data('events', () => ({
+        eventlist: [
+          {
+            day: 'sunday 10th',
+            date: '10',
+            events:
+              [
+                {
+                  name: 'The Fireflies are Gone',
+                  time: '13:00',
+                  country: 'Canada',
+                  length: '96',
+                  cert: null,
+                },
+                {
+                  name: 'There is No Place Like Home',
+                  time: '16:00',
+                  country: 'Italy',
+                  length: '105',
+                  cert: null,
+                }, {
+                  name: 'The Good Girls',
+                  time: '19:00',
+                  country: 'Mexico',
+                  length: '93',
+                  cert: '18+',
+                }, {
+                  name: 'Winter Files',
+                  time: '22:00',
+                  country: 'Czech Republic, Slovenia, Poland',
+                  length: '85',
+                  cert: null,
+                }
+              ],
+          },
+          {
+            day: 'sunday 17th',
+            date: '17',
+            events:
+              [
+                {
+                  name: 'Long Days Journey Into Night',
+                  time: '13:00',
+                  country: 'China, France',
+                  length: '140',
+                  cert: null,
+                },
+                {
+                  name: 'The Realm',
+                  time: '16:00',
+                  country: 'Spain, France',
+                  length: '122',
+                  cert: null,
+                }, {
+                  name: 'Cities of Last Things',
+                  time: '19:00',
+                  country: 'USA, France',
+                  length: '107',
+                  cert: null,
+                }, {
+                  name: 'Museo',
+                  time: '13:00',
+                  country: 'Mexico',
+                  length: '126',
+                  cert: '18+',
+                }
+              ],
+          },
+          {
+            day: 'sunday 24th',
+            date: '24',
+            events:
+              [
+                {
+                  name: 'The Fireflies are Gone',
+                  time: '13:00',
+                  country: 'Canada',
+                  length: '96',
+                  cert: null,
+                },
+                {
+                  name: 'There is No Place Like Home',
+                  time: '16:00',
+                  country: 'Italy',
+                  length: '105',
+                  cert: null,
+                }, {
+                  name: 'The Fireflies are Gone',
+                  time: '13:00',
+                  country: 'Canada',
+                  length: '96',
+                  cert: null,
+                }, {
+                  name: 'The Fireflies are Gone',
+                  time: '13:00',
+                  country: 'Canada',
+                  length: '96',
+                  cert: null,
+                }
+              ],
+          },
+        ],
+
+
+      }))
+    })
+
+  </script>
+</body>
+
+</html>
